@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>User CRM</title>
+
+		<!-- For Angular Routing -->
+		<base href='/' />
+
+		<!-- CSS -->
+		<!-- Load Bootstrap from CDN and custom CSS -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/paper/bootstrap.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.4/css/ngDialog-theme-default.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.4/css/ngDialog.min.css">
+
+		<!-- JS -->
+		<!-- Load Angular and Angular-route via CDN -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js" integrity="sha256-6Sr0HqNgUf/p88g6vsl87CrAnNqiOWhjlY6LS8jeWHA=" crossorigin="anonymous"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system-register-only.src.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.4/js/ngDialog.js"></script>
+		
+
+		<!-- Controller -->
+		<script src="app/controllers/mainCtrl.js"></script>
+		<script src="app/controllers/userCtrl.js"></script>
+
+		<!-- Services -->
+		<script src="app/services/authService.js"></script>
+		<script src="app/services/userService.js"></script>
+
+		<!-- Main Angular app files -->		
+		<script src="app/app.routes.js"></script>
+		<script src="app/app.js"></script>
+		
+
+	</head>
+	<body ng-app="userApp" ng-controller="mainController as main">
+
+		<!-- Navbar -->
+		<header>
+			<div class="navbar navbar-inverse" ng-if="main.loggedIn">
+				<div class="container">
+					<div class="navbar-header">
+						<a href="/" class="navbar-brand"><span class="glyphicons glyphicons-photo-album">camera-app</span></a>
+			
+					</div>
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="/users"><span class="glyphicon glyphicon-user"></span>Users</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+						<li ng-if="main.loggedIn" class="navbar-text">Hello {{ main.user.name }}!!!</li>
+						<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<main class="container">
+			<!-- Angular Views -->
+			<div ng-view></div>
+		</main>
+	</body>
+</html>

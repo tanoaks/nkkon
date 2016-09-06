@@ -1,0 +1,21 @@
+ boolean ref[]= new boolean[N];
+ for (int i = 0; i < N; i++) {
+ 	ref[i]=true;
+            
+        }
+        
+        for (int p=2; p*p<=N; p++)
+    {
+    	 if (ref[p] == true)
+        {
+        	 for (int i=p*2; i<=N; i += p)
+                ref[i] = false;
+        }
+    }
+    long sum=0;
+    for (int i = 0; i < N; i++) {
+            if(ref[i])
+           sum=inpi[i]; 
+        }
+    System.out.println(sum);
+    br.close();

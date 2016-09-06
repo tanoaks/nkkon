@@ -1,0 +1,65 @@
+
+<div class="page-header">
+	<h1>
+		Set Config
+		<!--<a href="/users/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>New User</a> -->
+	</h1>
+	
+</div>
+
+<!-- Loading Message -->
+<div class="jumbotron text-center" ng-show="user.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Users...</p>
+</div>
+<script type="text/ng-template" id="templateId">
+    <h1> change value</h1>
+	       <label for="name">options</label>
+    <select  ng-model="valueSelect2" ng-options="x.data for x in optionBox2"  ></select>
+	<input type="button" value="OK" ng-click="popupIn() && closeThisDialog('valueSelect2')"/>
+</script>
+<form action="" method="post" enctype="multipart/form-data">
+         <fieldset>
+            <label for="name">set-config</label>
+			<select ng-model="user.repeatSelect" ng-options="x.Name for x in user.selectBox"  ng-change="user.changeE()" ></select>
+             <label for="name">options</label>
+			<select  ng-model="user.valueSelect" ng-options="x.data for x in user.optionBox"  ></select>
+             
+            
+            <br />
+			
+            <label for="val">override:</label>
+            <input type="text" id="Value" name="Value" placeholder="Enter Manual entries here" ng-model="user.valueRequired" />
+            <br />
+			<br />
+			
+			<br/>
+         </fieldset>
+		 
+      </form>
+	  <button ng-click="user.AddR();" class="btn btn-block btn-primary">Add</button>
+	  	  <button ng-click="user.SendR();" class="btn btn-block btn-primary">Click</button>
+		   <button ng-click="user.CapA();" class="btn btn-block btn-primary">Capture</button>
+                   <button ng-click="user.WaitC();" class="btn btn-block btn-primary">WaitCondition</button>
+<table class="table table-bordered table-striped" >
+	<thread>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+			
+			<th class="col-sm-2"></th>
+		</tr>
+	</thread>
+	<tbody>
+		<!-- Loop over the users -->
+		<tr ng-repeat="config in user.configArray">
+			<td>{{  config.Name }}</td>
+			<td>{{  config.Value }}</td>
+			
+			<td class="col-sm-2">
+				<a  ng-click="user.editVal(config.Name)" class="btn btn-danger">Edit</a>
+				<a href="#" ng-click="user.delVal(config.Name)" class="btn btn-primary">Delete</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
