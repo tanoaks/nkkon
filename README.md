@@ -7,3 +7,6 @@ As a Requirement you will need gphoto2 and nodejs  to be installed on your linux
 ```
 $ wget https://raw.githubusercontent.com/gonzalo/gphoto2-updater/master/gphoto2-updater.sh && chmod +x gphoto2-updater.sh && sudo ./gphoto2-updater.sh
 ```
+currently the default password for app is
+username admin
+password admin
